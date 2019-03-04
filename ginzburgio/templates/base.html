@@ -1,0 +1,395 @@
+<head>
+    <style type="text/css">
+    .body, .body-container {
+        -webkit-font-smoothing: antialiased;
+        -ms-text-size-adjust: 100%;
+        -webkit-text-size-adjust: 100%;
+        background: #FFFFFF;
+        min-width: 100%;
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 100%;
+        border-collapse: collapse;
+        mso-table-lspace: 0pt;
+        mso-table-rspace: 0pt;
+    }
+
+    table, td, a, li {
+        -webkit-text-size-adjust: 100%;
+        -ms-text-size-adjust: 100%;
+    }
+
+    table {
+        mso-table-lspace:0pt;
+        mso-table-rspace:0pt;
+        border-spacing: 0;
+        border-collapse: collapse;
+    }
+
+    table td {
+        border-collapse: collapse;
+    }
+
+    a, li, blockquote {
+        mso-line-height-rule: exactly;
+    }
+
+    a, li, td, table, blockquote {
+        -ms-text-size-adjust: 100%;
+        -webkit-text-size-adjust: 100%;
+    }
+
+    h1 {
+        text-align: center;
+        font-size: 38px;
+        mso-line-height-rule: exactly;
+        line-height: 48px;
+        font-weight: bold;
+        padding: 30px 0;
+        margin-top: 0;
+    }
+
+    h2 {
+        font-size: 35px;
+        padding: 150px 0 10px 0;
+        margin-bottom: 0;
+        mso-line-height-rule: exactly;
+        line-height: 38px;
+        text-align: center;
+    }
+
+    h3 {
+        font-size: 28px;
+        line-height: 35px;
+        font-weight: normal;
+        padding: 30px 0 10px 0;
+        mso-line-height-rule: exactly;
+        margin: 0;
+
+    }
+
+    h1 a, h2 a {
+        color: #000;
+        text-decoration: none;
+    }
+
+    h1 strong, h2 strong {
+        font-size: 80px;
+    }
+
+    h1 small, h2 small {
+        font-size: 80%;
+        line-height: 1.7em;
+        color: #666;
+    }
+
+    p {
+        margin: 0 0 15px 0;
+    }
+
+    img, a img {
+        display: inline-block;
+        border: 0;
+        outline: none;
+        text-decoration: none;
+        max-width: 640px;
+        height: auto;
+        -ms-interpolation-mode: bicubic;
+    }
+
+    a {
+        text-decoration: underline;
+        color: #3498db;
+        font-weight: 600;
+        line-height: 26px;
+        mso-line-height-rule: exactly;
+    }
+
+    a[x-apple-data-detectors] {
+        color: inherit !important;
+        text-decoration: none !important;
+        font-size: inherit !important;
+        font-family: inherit !important;
+        font-weight: inherit !important;
+        line-height: inherit !important;
+        mso-line-height-rule: exactly;
+    }
+
+    ul, ol {
+        padding-left: 35px;
+    }
+
+        li {
+            padding-bottom: 10px;
+        }
+
+    blockquote {
+        display: inline-block;
+        font-size: 34px;
+        text-align: center;
+        margin: 20px 0 20px 0;
+        mso-line-height-rule: exactly;
+        line-height: 38px;
+    }
+
+    .email-container {
+        max-width: 640px !important;
+        border-collapse: collapse;
+        mso-table-lspace: 0pt;
+        mso-table-rspace: 0pt;
+        -ms-text-size-adjust: 100%;
+        -webkit-text-size-adjust: 100%;
+    }
+
+    .content-table {
+        background: #FFFFFF;
+        min-width: 640px;
+        width: 640px;
+        font-family: 'PT Sans', Arial, Verdana, sans-serif;
+    }
+
+    .content-container {
+        padding: 15px 25px 5px 25px;
+        font-family: 'PT Sans', Arial, Verdana, sans-serif;
+        color: #000000;
+        font-size: 18px;
+        mso-line-height-rule: exactly;
+        line-height: 27px;
+        -webkit-text-size-adjust: 100%;
+        -ms-text-size-adjust: 100%;
+    }
+
+    .share {
+        font-size: 12px;
+        display: inline-block;
+        padding: 2px 7px;
+        border: solid 2px #555555;
+        border-radius: 15px;
+        color: #555555;
+        text-decoration: none;
+        margin-right: 4px;
+        line-height: 16px;
+    }
+
+    .preheader-table {
+        min-width: 640px;
+        width: 640px;
+    }
+
+        .preheader-text,
+        .postfooter-text {
+            padding: 15px;
+            font-family: Arial, sans-serif;
+            font-size: 11px;
+            mso-line-height-rule: exactly;
+            line-height: 17px;
+            color: #7F8C8D;
+            text-align: right;
+        }
+
+            .preheader-text a,
+            .postfooter-text a {
+                color: #7F8C8D;
+                font-weight: 400;
+                mso-line-height-rule: exactly;
+            }
+
+    .header-table {
+        background: #FFFFFF;
+        min-width: 640px;
+        width: 640px;
+        font-family: 'PT Sans', sans-serif;
+    }
+
+        .logo-container {
+            padding: 20px 50px 5px 50px;
+            text-align: center;
+        }
+
+        .issue-container {
+            padding: 5px 50px 5px 50px;
+            text-align: center;
+            mso-line-height-rule: exactly;
+            mso-text-raise: -5px;
+        }
+
+            .issue-container span {
+                margin: 0;
+                font-weight: 400;
+                font-size: 30px;
+                text-decoration: none;
+                line-height: 42px;
+                color: #000000;
+            }
+
+    .footer-table a {
+        color: #8299a6;
+    }
+
+    .content-container p a,
+    .content-container ol li a,
+    .content-container ul li a {
+        word-break: break-word;
+    }
+
+    @-moz-document url-prefix() {
+        .content-container p a, ol li a, ul li a {
+            word-break: break-all !important;
+        }
+    }
+
+    .yellow {
+        background-color: #fff3d4;
+        margin: 20px 0;
+    }
+
+    .cite {
+        display: inline-block;
+        border-left: solid 2px #CCC;
+        padding: 5px 0 0 10px;
+        margin: 10px 0 30px 0 !important;
+        color: #999;
+        font-style: italic;
+    }
+
+        .cite p {
+            margin-bottom: 0;
+        }
+
+    .hr {
+        display: inline-block;
+        width: 100%;
+        max-width: 640px;
+        border-top: dashed 2px #BDC3C7;
+        margin: 25px 0 30px 0;
+    }
+
+    .button {
+        display: inline-block;
+        padding: 10px 50px 10px 50px;
+        border-radius: 5px;
+        font-size: 22px;
+        text-align: center;
+        background-color: #3498db;
+        color: #ffffff;
+        text-decoration: none;
+        margin: 15px 0 15px 0;
+    }
+
+        .button-donate {
+            display: inline-block;
+            padding: 10px 50px 10px 50px;
+            border-radius: 5px;
+            font-size: 22px;
+            text-align: center;
+            background-color: #7F8C8D;
+            color: #ffffff;
+            text-decoration: none;
+            margin: 15px 0 15px 0;
+        }
+
+        .button-subscribe {
+            display: inline-block;
+            padding: 10px 50px 10px 50px;
+            border-radius: 5px;
+            font-size: 22px;
+            text-align: center;
+            background-color: #FFFFFF;
+            border: solid 2px #7F8C8D;
+            color: #7F8C8D;
+            text-decoration: none;
+            margin: 15px 0 15px 0;
+        }
+
+    .figcaption {
+        display: block;
+        text-align: center;
+        font-family: 'PT Sans', sans-serif;
+        font-size: 16px;
+        color: #7F8C8D;
+        margin-bottom: 30px;
+        font-weight: normal;
+        text-decoration: none;
+    }
+
+    @media only screen and (max-width: 640px) {
+        .content-table,
+        .preheader-table,
+        .header-table {
+            width: 100% !important;
+            min-width: 200px !important;
+        }
+
+        .content-container {
+            font-size: 17px;
+        }
+
+        .content-container img {
+            height: auto !important;
+            width: 100% !important;
+        }
+
+        .issue-container span {
+            font-size: 22px !important;
+        }
+
+        h1 {
+            font-size: 28px !important;
+            line-height: 35px !important;
+        }
+
+        h2 {
+            font-size: 26px !important;
+            line-height: 32px !important;
+        }
+
+        h3 {
+            font-size: 24px !important;
+            line-height: 30px !important;
+        }
+
+        .button,
+        .button-subscribe,
+        .button-donate {
+            font-size: 18px !important;
+            padding: 7px 40px 7px 40px !important;
+        }
+    }
+</style>
+
+    <title>123</title>
+</head>
+
+<body class="body " leftmargin="0" marginwidth="0" topmargin="0" marginheight="0" dir="ltr" bgcolor="#FFFFFF">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#FFFFFF" class="body-container">
+    <tr>
+        <td align="center">
+            <table align="center" border="0" class="email-container" cellpadding="0" cellspacing="0" width="100%">
+                <tr>
+                    <td align="center">
+
+<!-- Pre-header begin -->
+<table width="640" align="center" cellspacing="0" cellpadding="0" border="0" class="content-table preheader-table">
+    <tr>
+        <td class="preheader-text">
+            <a href="#">tmp</a>&nbsp;::&nbsp;<a href="#">tmp</a>
+        </td>
+    </tr>
+</table>
+<!-- Pre-header end -->
+
+ <!-- Content starts here -->
+ {% block content %}
+     No content
+ {% endblock %}
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    </table>
+
+
+
+
+</body>

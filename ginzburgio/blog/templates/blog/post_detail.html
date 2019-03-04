@@ -1,0 +1,29 @@
+{% extends 'blog/base_blog.html' %}
+{% block content %}
+
+<!-- Header begin -->
+<table align="center" border="0" bgcolor="#FFFFFF" class="content-table header-table" cellspacing="0" cellpadding="0" width="640">
+    <tr>
+        <td class="logo-container">
+            <center><a href="#"><img border="0" src="{{ post.background.url }}" width="100" height="100" style="width: 100px; height: 100px;"/></a></center>
+        </td>
+    </tr>
+    <tr>
+        <td class="issue-container">
+            <center><span>{{ post.title }}</span></center>
+            <center>{{ post.created }}</center>
+        </td>
+    </tr>
+</table>
+<!-- Header end -->
+
+<!-- Main content begin -->
+<table align="center" border="0" bgcolor="#FFFFFF" class="content-table" cellspacing="0" cellpadding="0" width="640">
+    <tr>
+        <td align="left" class="content-container">
+            {{ post.content|safe }}
+        </td>
+    </tr>
+</table>
+<!-- Main content end -->
+{% endblock %}
