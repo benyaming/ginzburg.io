@@ -31,7 +31,9 @@ class Post(models.Model):
 
     objects = models.Manager
 
-    @property
+    class Meta:
+        ordering = ('-created',)
+
     def __str__(self):
         return f'{self.title}'
 
