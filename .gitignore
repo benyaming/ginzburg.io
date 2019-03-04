@@ -2,3 +2,9 @@
 \.idea/
 
 *.sqlite3
+
+ginzburgio/config/__pycache__/
+
+ginzburgio/blog/migrations/__pycache__/
+
+ginzburgio/blog/__pycache__/
