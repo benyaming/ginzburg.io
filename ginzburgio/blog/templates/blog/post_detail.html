@@ -1,24 +1,34 @@
 {% extends 'blog/base_blog.html' %}
+
+{% block title %} {{ post.title }} {% endblock %}
+
 {% block content %}
 
-<!-- Header begin -->
+<!--Post header begin -->
 <table align="center" border="0" bgcolor="#FFFFFF" class="content-table header-table" cellspacing="0" cellpadding="0" width="640">
     <tr>
-        <td class="logo-container">
-            <center><a href="#"><img border="0" src="{{ post.background.url }}" width="100" height="100" style="width: 100px; height: 100px;"/></a></center>
-        </td>
-    </tr>
-    <tr>
         <td class="issue-container">
-            <center><span>{{ post.title }}</span></center>
-            <center>{{ post.created }}</center>
+            <center><h1><span>{{ post.title }}</span></h1></center>
+            <center class="created">{{ post.created }}</center>
         </td>
     </tr>
 </table>
-<!-- Header end -->
+<!--Post header end -->
 
 <!-- Main content begin -->
+
+{% csrf_token %}
+ <p align="left" class="content-container">Views: {{ post.views }}</p>
+ <p align="left" class="content-container">
+     <a href="#" class="btn btn-xs btn-outline-success" id="like" data-catid="{{ post.id }}">👍🏻</a>
+     Likes: <span id="likes_count">{{ post.likes.count }}</span>
+    <a href="#" class="btn btn-xs btn-outline-danger" id="unlike" data-catid="{{ post.id }}">👎🏻</a>
+ </p>
 <table align="center" border="0" bgcolor="#FFFFFF" class="content-table" cellspacing="0" cellpadding="0" width="640">
+    <!--<tr>-->
+        <!--<td class="content-container">-->
+        <!--</td>-->
+    <!--</tr>-->
     <tr>
         <td align="left" class="content-container">
             {{ post.content|safe }}
@@ -26,4 +36,15 @@
     </tr>
 </table>
 <!-- Main content end -->
+
+
+<!-- Disqus comments begin -->
+<!--<table align="center" border="0" bgcolor="#FFFFFF" class="content-table" cellspacing="0" cellpadding="0" width="640">-->
+    <!--<tr>-->
+        <!--<td align="left" class="content-container">-->
+            <!--{% include 'blog/includes/disqus.html' %}-->
+        <!--</td>-->
+    <!--</tr>-->
+<!--</table>-->
+
 {% endblock %}

@@ -27,7 +27,6 @@ class Post(models.Model):
     tags = models.ManyToManyField(Tag, related_name='posts')
 
     views = models.IntegerField(default=0)
-    background = models.ImageField()
 
     objects = models.Manager
 
@@ -43,4 +42,23 @@ class Post(models.Model):
     def increment_views(self):
         self.views += 1
         self.save()
+
+    def like(self):
+        self.likes += 1
+        self.save()
+
+    def unlike(self):
+        if self.likes > 0:
+            self.likes -= 1
+
+
+class Like(models.Model):
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='likes')
+    session = models.CharField(max_length=250)
+
+    objects = models.Manager
+
+    class Meta:
+        unique_together = ('post', 'session')
+
 
