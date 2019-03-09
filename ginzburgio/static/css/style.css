@@ -147,6 +147,10 @@ blockquote {
     font-family: 'PT Sans', Arial, Verdana, sans-serif;
 }
 
+.tags {
+    background-color: #dbdbdb;
+}
+
 .content-container {
     padding: 15px 25px 5px 25px;
     font-family: 'PT Sans', Arial, Verdana, sans-serif;

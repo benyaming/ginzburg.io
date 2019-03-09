@@ -30,11 +30,18 @@
             {{ post.content|safe }}
         </td>
     </tr>
+    <tr>
+        <td align="left" class="tags content-container">
+            Категория: <a href="{{ post.category.get_absolute_url }}">{{ post.category }}</a><br>
+            Теги: {% for tag in post.tags.all %}<a href="{{ tag.get_absolute_url }}">{{ tag }} </a>{% endfor %}
+        </td>
+
+    </tr>
 </table>
 <!-- Main content end -->
 
 
-<!-- Disqus comments begin -->
+ <!--Disqus comments begin-->
 <!--<table align="center" border="0" bgcolor="#FFFFFF" class="content-table" cellspacing="0" cellpadding="0" width="640">-->
     <!--<tr>-->
         <!--<td align="left" class="content-container">-->

@@ -1,0 +1,7 @@
+{% for obj in object_list %}
+    <tr>
+        <td align="left" class="content-container">
+            <h4><a href="{{ obj.get_absolute_url }}">{{ obj.name }}</a></h4>
+        </td>
+    </tr>
+{% endfor %}

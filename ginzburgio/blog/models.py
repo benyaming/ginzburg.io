@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 class Category(models.Model):
@@ -7,12 +8,18 @@ class Category(models.Model):
     def __str__(self):
         return f'{self.name}'
 
+    def get_absolute_url(self):
+        return f'{reverse("index")}?category={self.name}'
+
 
 class Tag(models.Model):
     name = models.CharField(max_length=150)
 
     def __str__(self):
         return f'{self.name}'
+
+    def get_absolute_url(self):
+        return f'{reverse("index")}?tag={self.name}'
 
 
 class Post(models.Model):

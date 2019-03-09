@@ -1,15 +1,50 @@
 from django.views.generic import ListView, DetailView, View
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponseBadRequest
 from django.shortcuts import get_object_or_404
 from django.db.utils import IntegrityError
 from django.middleware.csrf import get_token
 
-from .models import Post, Like
+from .models import Post, Like, Tag, Category
 
 
 class PostList(ListView):
     model = Post
-    template_name = ''
+    template_name = 'blog/post_list.html'
+    header_text = None
+    # paginate_by = 1
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data()
+        context['header_text'] = self.header_text
+        return context
+
+    def get(self, request, *args, **kwargs):
+        if 'tag' in self.request.GET.keys():
+            tag_name = self.request.GET['tag']
+            tag = get_object_or_404(Tag, name=tag_name)
+            self.queryset = Post.objects.filter(tags=tag)
+            self.header_text = f'Все посты с тегом "{tag_name}"'
+
+        elif 'category' in self.request.GET.keys():
+            category_name = self.request.GET['category']
+            category = get_object_or_404(Category, name=category_name)
+            self.queryset = Post.objects.filter(category=category)
+            self.header_text = f'Все посты в категории "{category_name}"'
+        else:
+            self.header_text = 'Все посты'
+        self.paginate_by = 10
+
+        return super().get(request, *args, **kwargs)
+
+
+class CategoryList(ListView):
+    model = Category
+    template_name = 'blog/category_list.html'
+
+
+class TagList(ListView):
+    model = Tag
+    template_name = 'blog/tag_list.html'
 
 
 class PostDetail(DetailView):
@@ -40,6 +75,8 @@ class PostDetail(DetailView):
 class LikeView(View):
 
     def post(self, request, post_id):
+        if not self.request.is_ajax():
+            return HttpResponseBadRequest
         session = request.session.session_key
         post = get_object_or_404(Post, id=post_id)
 
@@ -52,10 +89,12 @@ class LikeView(View):
             msg = 'Liked!'
             status = 201
 
-        likes = Like.objects.all().count()
+        likes = Like.objects.filter(post=post).count()
         return JsonResponse({'msg': msg, 'likes': likes}, status=status)
 
     def delete(self, request, post_id):
+        if not self.request.is_ajax():
+            return HttpResponseBadRequest
         session = request.session.session_key
         post = get_object_or_404(Post, id=post_id)
         try:
@@ -68,5 +107,8 @@ class LikeView(View):
             status = 200
             msg = 'Unliked!'
 
-        likes = Like.objects.all().count()
+        likes = Like.objects.filter(post=post).count()
         return JsonResponse({'msg': msg, 'likes': likes}, status=status)
+
+
+

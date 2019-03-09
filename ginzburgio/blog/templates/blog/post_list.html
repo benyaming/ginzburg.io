@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{{ header_text }}</h1>
+<table align="center" border="0" bgcolor="#FFFFFF" class="content-table" cellspacing="0" cellpadding="0" width="640" style="margin-top: 100px">
+    {% for post in post_list %}
+    <tr>
+        <td align="left" class="content-container">
+            <h4><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h4>
+        </td>
+    </tr>
+    {% endfor %}
+
+</table>
+
+<div style="margin-top: 50px">
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            <li class="page-item {% if not page_obj.has_previous %}disabled {% endif %}"><a class="page-link" href="{% if not page_obj.has_previous %} # {% else %} /?page={{ page_obj.previous_page_number }} {% endif %}">Previous</a></li>
+            {% if page_obj.has_previous %}<li class="page-item"><a class="page-link" href="/?page={{ page_obj.previous_page_number }}"">{{ page_obj.previous_page_number }}</a></li>{% endif %}
+            <li class="page-item active"><a class="page-link" href="/?page={{ page_obj.number }}">{{ page_obj.number }}</a></li>
+            {% if page_obj.has_next %}<li class="page-item"><a class="page-link" href="/?page={{ page_obj.next_page_number }}">{{ page_obj.next_page_number }}</a></li>{% endif %}
+            <li class="page-item {% if not page_obj.has_next %}disabled {% endif %}"><a class="page-link" href="{% if not page_obj.has_next %} # {% else %} /?page={{ page_obj.next_page_number }} {% endif %}">Next</a></li>
+        </ul>
+    </nav>
+</div>
+
+{% endblock %}
