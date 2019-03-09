@@ -1,8 +1,8 @@
 from django.test import TestCase
 from django.urls import reverse
 
-from ..models import Like
-from .test_models import test_vars, test_post_data, create_default_post
+from ..models import Like, Post
+from .test_models import test_vars, create_default_post
 
 
 class PostDetailViewTest(TestCase):
@@ -16,6 +16,13 @@ class PostDetailViewTest(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'blog/post_detail.html')
         self.assertContains(response, test_vars['content'])
+
+    def test_number_of_post_views(self):
+        self.assertEqual(Post.objects.get(id=1).views, 0)
+        self.client.get(reverse('post_detail', args=[1]))
+        self.assertEqual(Post.objects.get(id=1).views, 1)
+        self.client.get(reverse('post_detail', args=[1]))
+        self.assertEqual(Post.objects.get(id=1).views, 2)
 
 
 class PostListViewTest(TestCase):
