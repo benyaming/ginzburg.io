@@ -100,8 +100,7 @@ STATICFILES_DIRS = [
 ]
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, MEDIA_URL)
 
-# SESSION_ENGINE = 'django.contrib.sessions.backends.signed_cookies'
-# SESSION_COOKIE_HTTPONLY = True
-# SESSION_SAVE_EVERY_REQUEST = True
+STATIC_ROOT = '/var/www/ginzburgio/static/'
+MEDIA_ROOT = '/var/www/ginzburgio/media'
+# TODO path in env var
