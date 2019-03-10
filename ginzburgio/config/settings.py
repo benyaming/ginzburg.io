@@ -4,19 +4,12 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
-
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'fgmv1ln5qg-o2ckv%2k860u_h=rx3=8%-&-27dsoyk)rj1+b%^'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False if os.environ.get('PRODUCTION') else True
 
-ALLOWED_HOSTS = ['ginzburg.io']
-
-
-# Application definition
+ALLOWED_HOSTS = [os.environ.get('HOST_NAME')]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -26,8 +19,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blog',
-    'trumbowyg'
-
+    'trumbowyg',
 ]
 
 MIDDLEWARE = [
@@ -62,10 +54,19 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
+STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
+
+STATIC_ROOT = '/var/www/static/'
+MEDIA_ROOT = '/var/www/media'
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': os.path.join(STATIC_ROOT, 'db.sqlite3'),
     }
 }
 
@@ -95,12 +96,5 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
-]
-STATIC_URL = '/static/'
-MEDIA_URL = '/media/'
 
-STATIC_ROOT = '/var/www/ginzburgio/static/'
-MEDIA_ROOT = '/var/www/ginzburgio/media'
 # TODO path in env var
