@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
-docker stop ginzburgio || true && docker rm ginzburgio || true
+docker stop {name of container} || true && docker rm ginzburgio || true
 
 docker run \
-  --name ginzburgio \
-  --mount type=bind,source=/var/www/ginzburgio,target=/var/www/ \
+  --name {name of container} \
+  --mount type=bind,source={path to your static files dir},target=/var/www/ \
   --restart always \
-  -p 9000:8000 \
+  -p 8000:8000 \
   -itd \
   python:3.7-stretch
 
-docker exec ginzburgio git clone https://github.com/benyomin94/ginzburg.io /home/code/
-docker exec ginzburgio pip install -r /home/code/ginzburgio/requirements.txt
+docker exec {name of container} git clone https://github.com/benyomin94/ginzburg.io /home/code/
+docker exec {name of container} pip install -r /home/code/ginzburgio/requirements.txt
