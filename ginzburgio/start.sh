@@ -12,6 +12,6 @@ cd /home/code/ginzburgio
 ./manage.py migrate
 ./manage.py test
 ./manage.py collectstatic --noinput
-./create_admin
+./create_admin.py
 gunicorn -c /home/code/ginzburgio/config/gunicorn_conf.py config.wsgi:application
 "
