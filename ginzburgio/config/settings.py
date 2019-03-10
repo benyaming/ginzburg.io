@@ -13,7 +13,7 @@ SECRET_KEY = 'fgmv1ln5qg-o2ckv%2k860u_h=rx3=8%-&-27dsoyk)rj1+b%^'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['ginzburg.io']
 
 
 # Application definition
