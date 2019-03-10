@@ -11,7 +11,8 @@ class PostList(ListView):
     model = Post
     template_name = 'blog/post_list.html'
     header_text = None
-    # paginate_by = 1
+    queryset = Post.objects.filter(archived__isnull=True)
+    paginate_by = 10
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data()
