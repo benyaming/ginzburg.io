@@ -11,18 +11,20 @@ test_vars = {
     'tags': 'Test tag'
 }
 
-test_post_data = {
-    'title': test_vars['title'],
-    'description': test_vars['description'],
-    'content': test_vars['content'],
-    'category': Category.objects.get(id=1)
-}
+def get_post_data():
+    test_post_data = {
+        'title': test_vars['title'],
+        'description': test_vars['description'],
+        'content': test_vars['content'],
+        'category': Category.objects.get(id=1)
+    }
+    return test_post_data
 
 
 def create_default_post():
-    Category.objects.create(name=test_vars['category'])
+    c = Category.objects.create(name=test_vars['category'])
     Tag.objects.create(name=test_vars['tags'])
-    _ = Post.objects.create(**test_post_data)
+    _ = Post.objects.create(**get_post_data())
     _.tags.set(Tag.objects.all())
 
 
@@ -90,7 +92,7 @@ class LikeTest(TestCase):
     def test_like(self):
         Category.objects.create(name=test_vars['category'])
         Tag.objects.create(name=test_vars['tags'])
-        post = Post.objects.create(**test_post_data)
+        post = Post.objects.create(**get_post_data())
         post.tags.set(Tag.objects.all())
 
         self.like_params = {'post': post, 'session': 'test_session_key'}
