@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-docker stop {name of container} || true && docker rm ginzburgio || true
+docker stop {name of container} || true && docker rm {name of container} || true
 
 docker run \
   --name {name of container} \

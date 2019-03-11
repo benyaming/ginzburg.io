@@ -9,14 +9,14 @@ Simple blog written on django
 - set up your web server. Example for nginx:
 ```
 server {
-  listen 443 ssl;
+  listen 80;
   # may be more settings here
   location /static/ {
-    root {your_static_folder_path};
+    root /var/www/ginzburgio/;
   }
 
   location /media/ {
-    root {your_static_folder_path};
+    root /var/www/ginzburgio/;
   }
 
   location / {
@@ -25,12 +25,12 @@ server {
   }
 }
 ```
-- install [Docker](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
+- install [Docker](https://raw.githubusercontent.com/benyomin94/ginzburg.io/master/ginzburgio/deploy.sh)
 
 
 ### Installing
 
-1) [Download](https://github.com/benyomin94/ginzburg.io/blob/master/ginzburgio/deploy.sh) deployment script
+1) [Download](https://raw.githubusercontent.com/benyomin94/ginzburg.io/master/ginzburgio/deploy.sh) deployment script
 2) Edit it with your params. Here is my example:
 ```
 docker run \
@@ -50,7 +50,7 @@ docker exec ginzburgio pip install -r /home/code/ginzburgio/requirements.txt
 
 ### Runing 
 
-1) [Download](https://github.com/benyomin94/ginzburg.io/blob/master/ginzburgio/start.sh) start script
+1) [Download](https://raw.githubusercontent.com/benyomin94/ginzburg.io/master/ginzburgio/start.sh) start script
 2) Edit it with your params. Here is my example:
 ```
 #!/usr/bin/env bash
