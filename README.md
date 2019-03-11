@@ -35,7 +35,7 @@ server {
 ```
 docker run \
   --name ginzburgio \
-  --mount type=bind,source=/var/www/ginzburgio,target=/var/www/ \
+  --mount type=bind,source=/var/www/ginzburgio/,target=/var/www/ \
   --restart always \
   -p 9000:8000 \ # 9000 is the port that you configured in nginx!
   -itd \
