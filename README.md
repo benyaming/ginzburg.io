@@ -6,7 +6,7 @@ Simple blog written on django
 
 ### Prerequisites
 - create a directory for static files, for exemple /var/www/mycoolsite
-- set up your web server. Example for nginx:
+- set up your web server. Example for nginx (in this example contaner's port is 8000:
 ```
 server {
   listen 80;
@@ -20,7 +20,7 @@ server {
   }
 
   location / {
-    proxy_pass http://127.0.0.1:8000/;
+    proxy_pass http://127.0.0.1:9000/;
     proxy_set_header Host $host;
   }
 }
@@ -37,7 +37,7 @@ docker run \
   --name ginzburgio \
   --mount type=bind,source=/var/www/ginzburgio,target=/var/www/ \
   --restart always \
-  -p 9000:8000 \
+  -p 9000:8000 \ # 9000 is the port that you configured in nginx!
   -itd \
   python:3.7-stretch
 
