@@ -61,6 +61,7 @@ export SECRET_KEY=\"fgmv1lx3=8%-&-27dsoyk)rj1+b%^\"
 export ADMIN_NAME=benyomin
 export ADMIN_MAIL=benyomin@ginzburg.io
 export ADMIN_PASS=123465
+export STATIC_ROOT={path to your static files dir}
 bash
 cd /home/code/ginzburgio
 ./manage.py makemigrations

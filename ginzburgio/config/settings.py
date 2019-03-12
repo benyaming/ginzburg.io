@@ -60,8 +60,13 @@ STATICFILES_DIRS = [
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 
-STATIC_ROOT = '/var/www/static/'
-MEDIA_ROOT = '/var/www/media'
+static_root_var = os.environ.get('STATIC_ROOT')
+if static_root_var.endswith('/'):
+    STATIC_ROOT = f'{os.environ.get("STATIC_ROOT")}static'
+    MEDIA_ROOT = f'{os.environ.get("STATIC_ROOT")}media'
+else:
+    STATIC_ROOT = f'{os.environ.get("STATIC_ROOT")}/static'
+    MEDIA_ROOT = f'{os.environ.get("STATIC_ROOT")}/media'
 
 DATABASES = {
     'default': {
