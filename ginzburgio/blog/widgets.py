@@ -6,6 +6,9 @@ from trumbowyg.widgets import get_trumbowyg_language
 
 
 class ContentWidget(TrumbowygWidget):
+    """
+    Custom realisation of trumbowyg widget.
+    """
     class Media:
         css = {
             'all': (

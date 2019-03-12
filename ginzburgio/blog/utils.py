@@ -12,6 +12,9 @@ from .models import Post, Category, Tag
 
 
 class ExportCsvMixin:
+    """
+    Additional functionality for csv exporting
+    """
     def export_as_csv(self, request: HttpRequest, qs: QuerySet):
         meta = self.model._meta
         print(meta.fields)
@@ -37,6 +40,9 @@ class CsvImportForm(Form):
 
 
 class ImportCsvMixin:
+    """
+        Additional functionality for csv importing
+        """
     def import_csv(self, request: HttpRequest):
         if request.method == "POST":
             csv_file = TextIOWrapper(request.FILES["csv_file"].file, encoding='utf-8')
@@ -81,6 +87,9 @@ class ImportCsvMixin:
 
 
 class ArchiveActionMixin:
+    """
+        Additional functionality for archiving and publishing posts
+        """
     def archive(self, request: HttpRequest, qs: QuerySet):
         for obj in qs:
             obj.archived = datetime.now()
@@ -99,6 +108,3 @@ class ArchiveActionMixin:
 
     archive.short_description = 'Archive'
     publicate.short_description = 'Publicate'
-
-
-

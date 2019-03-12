@@ -8,6 +8,9 @@ from .models import Post, Like, Tag, Category
 
 
 class PostList(ListView):
+    """
+    View for index post list (optional with filters by tag or category)
+    """
     model = Post
     template_name = 'blog/post_list.html'
     header_text = None
@@ -39,16 +42,25 @@ class PostList(ListView):
 
 
 class CategoryList(ListView):
+    """
+    View for category list
+    """
     model = Category
     template_name = 'blog/category_list.html'
 
 
 class TagList(ListView):
+    """
+    View for tag list
+    """
     model = Tag
     template_name = 'blog/tag_list.html'
 
 
 class PostDetail(DetailView):
+    """
+    View for every post
+    """
     model = Post
     template_name = 'blog/post_detail.html'
     pk_url_kwarg = 'post_id'
@@ -74,7 +86,9 @@ class PostDetail(DetailView):
 
 
 class LikeView(View):
-
+    """
+    View for ajax-only like-queries for 'like' and 'unlike' actions
+    """
     def post(self, request, post_id):
         if not self.request.is_ajax():
             return HttpResponseBadRequest
@@ -110,6 +124,3 @@ class LikeView(View):
 
         likes = Like.objects.filter(post=post).count()
         return JsonResponse({'msg': msg, 'likes': likes}, status=status)
-
-
-
