@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .views import PostList, PostDetail, LikeView, CategoryList, TagList
+from .views import PostList, PostDetail, LikeView, CategoryList, TagList, ajax_required
 
 
 urlpatterns = [

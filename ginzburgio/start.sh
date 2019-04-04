@@ -6,7 +6,7 @@ export SECRET_KEY=\"{secret key for csrf}\"
 export ADMIN_NAME={username of site admin}
 export ADMIN_MAIL={email of site admin}
 export ADMIN_PASS={password of site admin}
-export STATIC_ROOT=/var/www/ginzburgio/
+export STATIC_DIR=/var/www/ginzburgio/
 cd /home/code/ginzburgio
 ./manage.py makemigrations
 ./manage.py migrate

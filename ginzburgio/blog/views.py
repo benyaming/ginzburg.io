@@ -1,10 +1,21 @@
 from django.views.generic import ListView, DetailView, View
-from django.http import JsonResponse, HttpResponseBadRequest
+from django.http import JsonResponse, HttpResponseBadRequest, HttpRequest
 from django.shortcuts import get_object_or_404
 from django.db.utils import IntegrityError
+from django.utils.decorators import method_decorator
 from django.middleware.csrf import get_token
 
 from .models import Post, Like, Tag, Category
+
+
+def ajax_required(f):
+    def wrap(request: HttpRequest, *args, **kwargs):
+        if request.is_ajax():
+            return f(request, *args, **kwargs)
+        return HttpResponseBadRequest
+    # wrap.__doc__ = f.__doc__
+    # wrap.__name__ = f.__name__
+    return wrap
 
 
 class PostList(ListView):
@@ -14,7 +25,7 @@ class PostList(ListView):
     model = Post
     template_name = 'blog/post_list.html'
     header_text = None
-    queryset = Post.objects.filter(archived__isnull=True)
+    queryset = Post.objects.filter(archived_at__isnull=True)
     paginate_by = 10
 
     def get_context_data(self, *, object_list=None, **kwargs):
@@ -85,6 +96,7 @@ class PostDetail(DetailView):
         return render
 
 
+@method_decorator(ajax_required, name='post')
 class LikeView(View):
     """
     View for ajax-only like-queries for 'like' and 'unlike' actions
@@ -94,7 +106,10 @@ class LikeView(View):
             return HttpResponseBadRequest
         session = request.session.session_key
         post = get_object_or_404(Post, id=post_id)
-
+# data validation in models
+# like get object or 404
+# decorator is_ajax
+# get_or_create
         try:
             Like.objects.create(post=post, session=session)
         except IntegrityError:

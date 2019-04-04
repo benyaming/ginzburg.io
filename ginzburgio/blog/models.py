@@ -37,7 +37,7 @@ class Post(models.Model):
     description = models.CharField(max_length=600)
     content = models.TextField()
     created = models.DateTimeField(auto_now=True)
-    archived = models.DateTimeField(blank=True, null=True)
+    archived_at = models.DateTimeField(blank=True, null=True)
 
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='posts')
     tags = models.ManyToManyField(Tag, related_name='posts')
@@ -50,7 +50,7 @@ class Post(models.Model):
         return f'{self.title}'
 
     def get_absolute_url(self):
-        return f'/posts/{self.id}'
+        return reverse('post_detail', args=[self.id])
 
     def increment_views(self):
         self.views += 1
@@ -66,5 +66,3 @@ class Like(models.Model):
 
     class Meta:
         unique_together = ('post', 'session')
-
-

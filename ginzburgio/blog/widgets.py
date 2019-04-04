@@ -20,7 +20,8 @@ class ContentWidget(TrumbowygWidget):
             '//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js',
             'trumbowyg/trumbowyg.min.js',
             'trumbowyg/plugins/upload/trumbowyg.upload.js',
-            f'trumbowyg/langs/{get_trumbowyg_language()}.min.js'
+            f'trumbowyg/langs/{get_trumbowyg_language()}.min.js',
+            'trumbowyg/dist/plugins/preformatted/trumbowyg.preformatted.min.js'
         ]
 
     def render(self, name, value, attrs=None, renderer=None):
@@ -31,7 +32,7 @@ class ContentWidget(TrumbowygWidget):
                 lang: "{get_trumbowyg_language()}",
                 semantic: true,
                 resetCss: true,
-                autogrow: false,
+                autogrow: true,
                 removeformatPasted: true,
                 btnsDef: {{
                     image: {{
@@ -49,7 +50,8 @@ class ContentWidget(TrumbowygWidget):
                        ['horizontalRule'],
                        ['removeformat'],
                        ['fullscreen'],
-                       ['viewHTML']
+                       ['viewHTML'],
+                       ['preformatted'],
                 ],
                 plugins: {{
                     upload: {{

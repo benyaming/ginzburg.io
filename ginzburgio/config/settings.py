@@ -5,11 +5,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = 'kuygiuliuhliygfkuyglhk'
 
-DEBUG = False if os.environ.get('PRODUCTION') else True
+DEBUG = os.environ.get('PRODUCTION', True)
 
-ALLOWED_HOSTS = [os.environ.get('HOST_NAME')]
+ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -60,18 +61,14 @@ STATICFILES_DIRS = [
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 
-static_root_var = os.environ.get('STATIC_ROOT')
-if static_root_var.endswith('/'):
-    STATIC_ROOT = f'{os.environ.get("STATIC_ROOT")}static'
-    MEDIA_ROOT = f'{os.environ.get("STATIC_ROOT")}media'
-else:
-    STATIC_ROOT = f'{os.environ.get("STATIC_ROOT")}/static'
-    MEDIA_ROOT = f'{os.environ.get("STATIC_ROOT")}/media'
+STATIC_ROOT = r'C:\Users\maryf\PycharmProjects\ginzburg.io\ginzburgio'
+# STATIC_ROOT = f'{os.environ.get("STATIC_ROOT")}/static'
+MEDIA_ROOT = f'{os.environ.get("STATIC_ROOT")}/media'
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(STATIC_ROOT, 'db.sqlite3'),
+        'NAME': 'db.sqlite3',
     }
 }
 
